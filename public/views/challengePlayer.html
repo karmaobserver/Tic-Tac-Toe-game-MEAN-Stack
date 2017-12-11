@@ -1,0 +1,23 @@
+<h1>Challenge Player</h1>
+
+
+<table  class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th>Online users to challenge:</th>
+			<th>&nbsp</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr key-property="userName" ng-repeat="user in vm.usersOnline" >
+		
+			<td>{{user}}</td>
+			<td><button type="button" class="btn btn-success" ng-click="vm.challenge(user)" ng-disabled="vm.userDisabled(user)">Challenge</button></td> 
+			
+		</tr>
+	</tbody>
+</table>
+
+<button type="button" ng-click="vm.clearArray()">Obrisi challnges</button>
+
+<!-- ng-disabled="vm.userDisabled[user]" -->

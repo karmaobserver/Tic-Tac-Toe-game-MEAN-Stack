@@ -1,0 +1,142 @@
+<!<!DOCTYPE html>
+<html>
+<head>
+	<title>XO</title>
+	<meta charset="utf-8"> 
+	<!-- <base href="/" /> -->
+	<!-- Koristim za refreshovanje ili gadjanje konkretnog URL-a -->
+	<base href="/index.html">
+
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/Styles.css">
+
+	<!-- jQuery library -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script> -->
+	 
+	<!-- JS -->
+	<script src="assets/lib/angular.js"></script>
+	<script src="assets/lib/jquery-1.12.3.js"></script>
+	<!-- <script src="lib/angular-route.js"></script> -->
+	<script src="assets/lib/angular-ui-router.js"></script>
+	<script src="assets/lib/bootstrap.js"></script>
+	<script src="assets/lib/ngStorage.js"></script>
+	<script src="assets/lib/angular-jwt.js"></script>
+	<script src="assets/lib/socket.js"></script>
+	<script src="assets/lib/bootbox.js"></script>
+	<script src="assets/lib/socket.io-1.4.5.js"></script>
+	
+	<!-- sa neta za testiranje prvo  -->
+	<!-- <script src="https://cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js"></script> -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script> -->
+	<!-- <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script> -->
+
+	<!-- Custom JS -->
+	<!-- prvo mora da se ucita js gde smo definisali modul aplikacije -->
+	<script src="routesConfig/appRoutes.js"></script>
+	<!-- <script src="application.js"></script> -->
+	<script src="controllers/userProbaCtrl.js"></script>
+	<script src="controllers/registerCtrl.js"></script>
+	<script src="controllers/loginCtrl.js"></script>
+	<script src="controllers/logoutCtrl.js"></script>
+	<script src="controllers/homeCtrl.js"></script>
+	<script src="controllers/homePageCtrl.js"></script>
+	<script src="controllers/profileCtrl.js"></script>
+	<script src="controllers/statisticCtrl.js"></script>
+	<script src="controllers/chatCtrl.js"></script>
+	<script src="controllers/indexChatCtrl.js"></script>
+	<script src="controllers/challengePlayerCtrl.js"></script>
+	<script src="controllers/challengesCtrl.js"></script>
+	<script src="controllers/tableCtrl.js"></script>
+	<script src="controllers/notificationCtrl.js"></script>
+	<script src="services/userService.js"></script>
+	<script src="services/statisticService.js"></script>
+	<script src="services/gameService.js"></script>
+	<script src="services/socket.js"></script>
+	
+</head>
+<body ng-app="xo">
+<img src="assets/img/bg.jpg" class="bg">
+<div id="page-wrap">
+<table>
+	<tr>
+		<td colspan="3" class="header">   <!-- colspan="2" -->
+			<!-- <h1>HELLO WORLD</h1> -->
+			<div class="container-fluid">
+   				<div class="row">
+					<!-- <img src="//placehold.it/800x80" class="img-responsive"> -->
+					<img src="assets/img/logo5.png" class="img-responsive">
+  				 </div>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td class="leftMenu" ng-controller="notificationCtrl as vm">
+			<div ng-if="isLoggedIn()">
+				<a ui-sref="home">Home</a>
+				<a ui-sref="profile">Profile</a>
+				<a ui-sref="statistic">Statistic</a>
+				<!-- <a ui-sref="chat">Chat</a> -->
+				<a ui-sref="table">Table</a>
+				<a ui-sref="challengePlayer">Challenge player</a>
+				<!-- <a ui-sref="challenges">Challenges <span ng-if="vm.notifications > 0">{{vm.notifications}}</span></a> -->
+				<!-- <a ui-sref="challenges" ng-style="myStyle">Challenges <span ng-if="notifications > 0">{{notifications}}</span><span></span></a> -->
+				<a ui-sref="challenges" ng-class="{yellowstyle: notifications > 0, lightbluestyle: notifications == 0}">Challenges <span ng-if="notifications > 0">{{notifications}}</span></a>
+				<a ui-sref="logout">Logout</a>
+			</div>
+			<div ng-if="!isLoggedIn()">
+				<a ui-sref="homePage">Home</a>		
+				<a ui-sref="login">Login</a>
+				<a ui-sref="register">Register</a>			
+				
+				
+			</div>
+			
+		</td>
+		<td class="mainContent">
+			<ui-view> </ui-view>
+			
+			
+		</td>
+		<!-- Ako je logovan korisnik, prikazujem listu online user-a i chat -->
+		<td class="rightMenu" ng-if="isLoggedIn()" ng-controller="indexChatCtrl as vm">
+			<div class="row">
+				<div class="col-xs-8 chat-window">
+					<ul>
+						<li ng-repeat="message in vm.messages">
+							<span class="username">{{message.userName}}:</span>
+							<span class="message">{{message.message}}</span>				
+						</li>
+					</ul>
+				</div>			
+			</div>
+			<div class="row">
+				<form class="form-inline">
+					
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="chatInput" placeholder="Enter Text Here..." ng-model="vm.msg">		
+					</div>	 
+					<button type="submit" class="btn btn-primary" ng-click="vm.sendMessage(vm.msg)">Send</button>
+				</form>
+			</div>
+
+			<p class="podnaslov">Online users:</p>
+			<div class="col-xs-4 user-window">
+					<ul >
+						<li  key-property="userName" ng-repeat="user in vm.users " >
+							<span>{{user}}</span>
+						</li>
+					</ul>
+			</div>		
+		</td>
+	
+	</tr>
+	<tr>
+		<td colspan="3" class="footer">
+			<b>Created by Makso, all copyrights goes to Makso!!! :)</b>
+		</td>
+	</tr>
+</table>
+</div>
+</body>
+</html>

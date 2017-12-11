@@ -1,0 +1,23 @@
+<h1>Challenges</h1>
+
+
+<table  class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th>Challenged by users:</th>
+			<th>&nbsp</th>
+			<th>&nbsp</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr key-property="userName" ng-repeat="user in vm.user.challengers" >
+		
+			<td>{{user}}</td>
+			<td><button type="button" class="btn-success" ng-click="vm.acceptChallenge(user)">Accept</button></td>
+			<td><button type="button" class="btn-danger" ng-click="vm.declineChallenge(user)">Decline</button></td>
+			
+		</tr>
+	</tbody>
+</table>
+
+<button type="button" class="btn-warning" ng-click="vm.clearArray()">Clear challengers</button>

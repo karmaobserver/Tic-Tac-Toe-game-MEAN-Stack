@@ -1,0 +1,40 @@
+
+	<h1 align="center">Statistic</h1>
+	<br>
+	<!-- {{vm.statistics[0].wins}}
+	{{vm.statistics[0].user[0].userName}}
+	{{vm.statistics[1].user[0].userName}} -->
+<table  class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th>User Name</th>
+			<th>Games played</th>
+			<th>Wins</th>
+			<th>Loses</th>
+			<th>Win ratio</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="statistic in vm.statistics | orderBy:'wins' : true">
+			<!-- <td>{{statistic.user.length ? statistic.user[0].userName : ''}}</td> -->	
+			<td>{{statistic.user[0].userName}}</td>
+			<td>{{statistic.games}}</td>
+			<td>{{statistic.wins}}</td>
+			<td>{{statistic.loses}}</td>
+			<td>{{statistic.winRatio.toFixed(2)}}%</td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+	<!-- 
+				<table>
+					<tr ng-repeat="statistic in vm.statistics">
+						<td>{{statistic._id}}</td>
+						<td>{{statistic.wins}}</td>
+						<td>{{statistic.loses}}</td>
+						<td>{{statistic.games}}</td>
+						<td>{{statistic.winRatio}}</td>
+					</tr>
+				</table> -->

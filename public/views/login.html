@@ -1,0 +1,29 @@
+<div class="container">
+<h2>Login</h2>
+
+ <!-- <div class="alert alert-success" ng-if="message">{{message}}</div> -->
+ <div class="alert alert-danger" ng-if="error">{{error}}</div>      
+
+<form role="form"  ng-submit="vm.login()">
+	<div class="row">
+		<div class="col-xs-4">
+			<div class="form-group">
+				<label>Username</label>
+				<input type="text" class="form-control" name="username" placeholder="Enter your username" ng-model="vm.credentials.userName">
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-4">
+			<div class="form-group">
+				<label>Password</label>
+				<input type="password" class="form-control" name="password" placeholder="Enter your password" ng-model="vm.credentials.password">
+			</div>
+		</div>
+	</div>
+	<button type="submit" class="btn btn-success">Login!</button>
+	<p><br>You don't have account? <a ui-sref="register">Register now</a></p>
+	
+</form>
+
+</div>

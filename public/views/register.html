@@ -1,0 +1,51 @@
+<div class="container">
+<h2>Register</h2>
+ 
+            <div class="alert alert-success" ng-if="message">{{message}}</div>
+            <div class="alert alert-danger" ng-if="!message && error">{{error}}</div>      
+          
+<form role="form"  ng-submit="vm.register()">
+	<p>Filleds with * are optional.</p>
+	<div class="row">
+		<div class="col-xs-4">
+			<div class="form-group">
+				<label>Username</label>
+				<input type="text" class="form-control" name="username" placeholder="Enter your username" ng-model="vm.credentials.userName">
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-4">
+			<div class="form-group">
+				<label>Password</label>
+				<input type="password" class="form-control" name="password" placeholder="Enter your password" ng-model="vm.credentials.password">
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-4">
+			<div class="form-group">
+				<label>Email*</label>
+				<input type="text" class="form-control" name="email" placeholder="Enter your email" ng-model="vm.credentials.email">
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-4">
+			<div class="form-group">
+				<label>First Name*</label>
+				<input type="text" class="form-control" name="firstName" placeholder="Enter your first name" ng-model="vm.credentials.firstName">
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-4">
+			<div class="form-group">
+				<label>Last name*</label>
+				<input type="text" class="form-control" name="lastName" placeholder="Enter your last name" ng-model="vm.credentials.lastName">
+			</div>
+		</div>
+	</div>
+	<button class="btn btn-success" type="submit" class="btn btn-default">Register!</button>
+</form>
+</div>

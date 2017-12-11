@@ -1,0 +1,119 @@
+<h1 align="center">Profile</h1>
+
+			<div class="alert alert-success" ng-if="message">{{message}}</div>
+            <div class="alert alert-danger" ng-if="!message && error">{{error}}</div>  
+
+<!-- <p class="podnaslov">Personal information:</p>
+<form name="profileForm" ng-submit="vm.modifyProfile()">
+	<table  class="table">
+		<tr>
+			<th class="col-sm-2">User name:</th>
+			
+			<td ng-if="vm.isEditing === true"><input type="text" ng-model="vm.user.userName" ng-model-options="{ updateOn: 'submit' }"></td>
+			<td ng-if="vm.isEditing === false">{{vm.user.userName}}</td> 		
+		</tr>
+		<tr>
+			<th class="col-sm-2">First name:</th>
+			<td ng-if="vm.isEditing === true"><input type="text" ng-model="vm.user.firstName" ng-model-options="{ updateOn: 'submit' }"></td>
+			<td ng-if="vm.isEditing === false">{{vm.user.firstName}}</td>
+			
+		</tr>
+		<tr>
+			<th class="col-sm-2">Last Name:</th>
+			<td ng-if="vm.isEditing === true"><input type="text" ng-model="vm.user.lastName" ng-model-options="{ updateOn: 'submit' }"></td>
+			<td ng-if="vm.isEditing === false">{{vm.user.lastName}}</td>
+		</tr>
+		<tr>
+			<th class="col-sm-2">Email:</th>
+			<td ng-if="vm.isEditing === true"><input type="text" ng-model="vm.user.email" ng-model-options="{ updateOn: 'submit' }"></td>
+			<td ng-if="vm.isEditing === false">{{vm.user.email}}</td>
+	</table>
+
+	<button ng-if="vm.isEditing === false" class="btn btn-info" type="button" ng-click="vm.editProfile()">Edit profile</button>
+	<button ng-if="vm.isEditing === true" class="btn btn-info" type="submit" >Save changes</button>
+	<button ng-if="vm.isEditing === true" class="btn btn-info" type="button" ng-click="vm.editProfileCancle()">Cancle</button>
+	<br><br>
+ </form>
+
+<p class="podnaslov">Personal statistic:</p>
+<table  class="table">
+	<tr>
+		<th class="col-sm-2">Games played:</th>
+		<td>{{vm.statistic.games}}</td>
+	</tr>
+	<tr>
+		<th class="col-sm-2">Wins:</th>
+		<td>{{vm.statistic.wins}}</td>
+	</tr>
+	<tr>
+		<th class="col-sm-2">Loses:</th>
+		<td>{{vm.statistic.loses}}</td>
+	</tr>
+	<tr>
+		<th class="col-sm-2">Win ratio:</th>
+		<td>{{vm.statistic.winRatio}}</td>
+	</tr>
+	
+</table> -->
+	
+
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#info">Personal information</a></li>
+  <li><a data-toggle="tab" href="#statistic">Personal statistic</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="info" class="tab-pane fade in active">
+    <form name="profileForm" ng-submit="vm.modifyProfile()">
+		<table  class="table">
+			<tr>
+				<th class="col-sm-2">User name:</th>
+				<!-- ng-mode-options koristim da kad editujem text fild da se model ne updejtuje dok kliknem na submit button -->
+				<!-- <td ng-if="vm.isEditing === true"><input type="text" ng-model="vm.user.userName" ng-model-options="{ updateOn: 'submit' }"></td> -->
+				<td>{{vm.user.userName}}</td> 		
+			</tr>
+			<tr>
+				<th class="col-sm-2">First name:</th>
+				<td ng-if="vm.isEditing === true"><input type="text" ng-model="vm.user.firstName" ng-model-options="{ updateOn: 'submit' }"></td>
+				<td ng-if="vm.isEditing === false">{{vm.user.firstName}}</td>
+				
+			</tr>
+			<tr>
+				<th class="col-sm-2">Last Name:</th>
+				<td ng-if="vm.isEditing === true"><input type="text" ng-model="vm.user.lastName" ng-model-options="{ updateOn: 'submit' }"></td>
+				<td ng-if="vm.isEditing === false">{{vm.user.lastName}}</td>
+			</tr>
+			<tr>
+				<th class="col-sm-2">Email:</th>
+				<td ng-if="vm.isEditing === true"><input type="text" ng-model="vm.user.email" ng-model-options="{ updateOn: 'submit' }"></td>
+				<td ng-if="vm.isEditing === false">{{vm.user.email}}</td>
+		</table>
+
+		<button ng-if="vm.isEditing === false" class="btn btn-info" type="button" ng-click="vm.editProfile()">Edit profile</button>
+		<button ng-if="vm.isEditing === true" class="btn btn-info" type="submit" >Save changes</button>
+		<button ng-if="vm.isEditing === true" class="btn btn-info" type="button" ng-click="vm.editProfileCancle()">Cancle</button>
+		<br><br>
+ 	</form>
+  </div>
+  <div id="statistic" class="tab-pane fade">
+    <table  class="table">
+		<tr>
+			<th class="col-sm-2">Games played:</th>
+			<td>{{vm.statistic.games}}</td>
+		</tr>
+		<tr>
+			<th class="col-sm-2">Wins:</th>
+			<td>{{vm.statistic.wins}}</td>
+		</tr>
+		<tr>
+			<th class="col-sm-2">Loses:</th>
+			<td>{{vm.statistic.loses}}</td>
+		</tr>
+		<tr>
+			<th class="col-sm-2">Win ratio:</th>
+			<td>{{vm.statistic.winRatio.toFixed(2)}}%</td>
+		</tr>
+	
+	</table>
+  </div>
+</div>
